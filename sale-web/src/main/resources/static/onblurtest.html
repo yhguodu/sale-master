@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <script type="text/javascript">
+        function upperCase()
+        {
+            var x=document.getElementById("fname").value
+            document.getElementById("fname").value=x.toUpperCase()
+        }
+    </script>
+</head>
+
+<body>
+
+输入您的姓名：
+<input type="text" id="fname" onblur="upperCase()" />
+
+</body>
+</html>

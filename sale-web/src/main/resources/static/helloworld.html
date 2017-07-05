@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iDuck-The Virtual Pet Rock</title>
+    <script type="text/javascript" src="js/cookie.js"></script>
+    <script type="text/javascript">
+        var userName;
+        function resizeDuck() {
+            document.getElementById("duckImg").style.height =
+                (document.body.clientHeight-100)*0.9;
+        }
+        function validateNumber(value) {
+            alert("please enter a number");
+        }
+        function upperCase() {
+            var x=document.getElementById("fname").value
+            document.getElementById("fname").value=x.toUpperCase()
+        }
+        function touchDuck() {
+            if (userName) {
+                alert("i like the attention, " + userName + ",thank you");
+            }
+            else {
+                userName = prompt("What's your name", "please your name here.");
+                if (userName) {
+                    alert("It is good to meet you," + userName + ".");
+                    writeCookie("iduck_username",userName,365);
+                }
+                document.getElementById("duckImg").src = "picture/happy.jpg";
+                setTimeout("document.getElementById('duckImg').src='picture/angry.jpg';", 6000);
+            }
+        }
+        function  greatUser() {
+            userName = readCookie("iduck_username");
+            if(userName)
+                alert("hello "+ userName +", I missed you.");
+            else
+                alert("hello,I am you pet rock.");
+        }
+        
+        function invalidNonEmpty(inputField, helpText) {
+            if(inputField.value.length == 0) {
+                if(helpText != null)
+                    helpText.innerHTML = "please enter a value.";
+                return false;
+            }
+            else {
+                if(helpText != null)
+                    helpText.innerHTML = "";
+                return true;
+            }
+        }
+    </script>
+</head>
+<body onload="resizeDuck();greatUser();" onresize="resizeDuck()">
+    <input id="phone" name="phone" type="text" size="12"
+            onblur="invalidNonEmpty(this,document.getElementById('phone_help'));" />
+    <span id="phone_help" class="help"></span>
+
+    Duck Demo
+    <div id="frano">
+        <div id="header">Ready to find a new house?</div>
+        <div id="left" style="margin-top: 100px; text-align: center">
+            <img id="duckImg" src="picture/welcom.jpg" height="200" width="200" alt="iduck"
+            style="cursor:pointer " onclick="touchDuck()" />
+        </div>
+        <form name="orderform" action=".." method="POST">
+            <div class="filed">Enter you annual income:
+                <input id="income" type="text" size="12" onblur="upperCase()" />
+            </div>
+            <div class="field">Enter you zip code:
+                <input id="zip" type="text" size="6" onblur="validateNumber(this.value())" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>
