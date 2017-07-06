@@ -1,5 +1,6 @@
 package com.yhguodu.sale.common.result;
 
+import com.yhguodu.sale.common.exception.MetaMessage;
 import com.yhguodu.sale.common.exception.SaleException;
 
 /**
@@ -14,5 +15,9 @@ public class ArkResultGenerator {
 
     public static <T> ArkResult<T> genFail(SaleException e) {
         return new ArkResult<T>(e.getCode(),e.getMessage(),null);
+    }
+
+    public static <T> ArkResult<T> genFail(MetaMessage meta) {
+        return new ArkResult<T>(meta.getCode(),meta.getMessage(),null);
     }
 }

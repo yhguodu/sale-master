@@ -5,9 +5,18 @@ public class SaleUser {
 
     private int id;
     private String name;
+    private String password;
     private String email;
     private String address;
-    private String loginKey;
+
+    public SaleUser() {}
+    public SaleUser(int id, String name,String password,String email,String address) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+    }
 
     public int getId() {
         return id;
@@ -41,11 +50,11 @@ public class SaleUser {
         this.address = address;
     }
 
-    public String getLoginKey() {
-        return loginKey;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLoginKey(String loginKey) {
-        this.loginKey = loginKey;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
